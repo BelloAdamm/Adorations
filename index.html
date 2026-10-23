@@ -151,7 +151,7 @@
           <figure class="chambers-visual reveal">
             <div class="chambers-image-frame">
               <img
-                src="photo_2026-10-20_14-54-44.jpg"
+                src="./IMAGES/ADORATION HOUSE.jpg"
                 alt="Exterior of Adoration House, with the Adoration Chambers sign above the entrance."
                 width="1920"
                 height="2560"
@@ -189,7 +189,7 @@
           <figure class="about-visual reveal">
             <div class="about-image-frame">
               <img
-                src="photo_2026-10-21_03-37-41.jpg"
+                src="./IMAGES/THE LAW LIBRARY.jpg"
                 alt="Bookshelves in the Adoration Chambers library, including Nigerian law volumes."
                 width="1920"
                 height="2560"
@@ -224,7 +224,7 @@
             <figure class="interior-photo interior-reception reveal">
               <div class="interior-image-frame">
                 <img
-                  src="photo_2026-10-20_13-24-01.jpg"
+                  src="./IMAGES/RECEPTION.jpg"
                   alt="Adoration Chambers reception, showing the firm's reception desk and wall sign."
                   width="1920"
                   height="2560"
@@ -237,7 +237,7 @@
             <figure class="interior-photo interior-waiting reveal">
               <div class="interior-image-frame">
                 <img
-                  src="photo_2026-10-20_14-54-40.jpg"
+                  src="./IMAGES/VISITOR WAITING AREA.jpg"
                   alt="Visitor waiting area at Adoration Chambers, with seating beside the windows."
                   width="1920"
                   height="2560"
@@ -434,7 +434,7 @@
       <section class="leadership-section" id="people">
         <div class="leadership-image">
           <img
-            src="photo_2026-10-08_06-45-49.jpg"
+            src="./IMAGES/B.R. Gold, SAN.jpg"
             alt="Professional portrait placeholder for firm leadership"
             loading="lazy"
           />
@@ -621,12 +621,23 @@ Legal tip: Consider dispute resolution clauses carefully before signing a contra
             <div class="panel-heading">
               <span>SEND CONSULTATION REQUEST</span>
             </div>
-            <form id="enquiry-form">
+            <form
+              id="enquiry-form"
+              action="https://formsubmit.co/adorationchambers2@gmail.com"
+              method="POST"
+              accept-charset="UTF-8"
+            >
+              <input
+                type="hidden"
+                name="_subject"
+                value="Consultation request"
+              />
+              <input type="hidden" name="_captcha" value="false" />
               <div class="form-honeypot" aria-hidden="true">
                 <label for="company">Company</label>
                 <input
                   id="company"
-                  name="company"
+                  name="_honey"
                   tabindex="-1"
                   autocomplete="off"
                 />
@@ -637,6 +648,7 @@ Legal tip: Consider dispute resolution clauses carefully before signing a contra
                     name="name"
                     autocomplete="name"
                     required
+                    maxlength="120"
                     placeholder="Your name"
                 /></label>
                 <label
@@ -645,6 +657,7 @@ Legal tip: Consider dispute resolution clauses carefully before signing a contra
                     name="email"
                     autocomplete="email"
                     required
+                    maxlength="254"
                     placeholder="you@example.com"
                 /></label>
               </div>
@@ -710,6 +723,7 @@ Legal tip: Consider dispute resolution clauses carefully before signing a contra
                       type="tel"
                       name="phone"
                       autocomplete="tel-national"
+                      maxlength="40"
                       placeholder="Your phone number"
                     />
                   </span>
@@ -752,6 +766,7 @@ Legal tip: Consider dispute resolution clauses carefully before signing a contra
                   name="message"
                   rows="3"
                   required
+                  maxlength="5000"
                   placeholder="A brief, non-confidential overview"
                 ></textarea>
               </label>
@@ -790,8 +805,8 @@ Legal tip: Consider dispute resolution clauses carefully before signing a contra
               <div class="office-number">KWARA STATE</div>
               <h3>Ilorin</h3>
               <p class="office-address">
-                Adoration House<br />Plot 19, New Yidi Road<br />Ilorin, Kwara
-                State, Nigeria
+                Adoration House,<br />Plot 19, New Yidi Road,<br />Ilorin, Kwara
+                State, Nigeria.
               </p>
               <a
                 href="https://www.google.com/maps/search/?api=1&query=Adoration+Chambers+Ilorin+Nigeria"
@@ -809,8 +824,8 @@ Legal tip: Consider dispute resolution clauses carefully before signing a contra
               <div class="office-number">FCT</div>
               <h3>Abuja</h3>
               <p class="office-address">
-                45 Ahmadu Bello Way<br />Abuja, Federal Capital Territory,
-                Nigeria
+                45, Ahmadu Bello Way,<br />Abuja, Federal Capital Territory,
+                Nigeria.
               </p>
               <a
                 href="https://www.google.com/maps/search/?api=1&query=45%20Ahmadu%20Bello%20Way%2C%20Abuja%2C%20Federal%20Capital%20Territory%2C%20Nigeria"
@@ -829,7 +844,7 @@ Legal tip: Consider dispute resolution clauses carefully before signing a contra
               <h3>Lagos</h3>
               <p class="office-address">
                 Plot 849b,
-                Ouebode street,<br/>Ifeanyi UBAC resent, Omole phase 2,<br/>Ikeja Lagos
+                Ouebode street,<br/>Ifeanyi UBAC resent, Omole phase 2,<br/>Ikeja, Lagos, Nigeria.
               </p>
               <a
                 href="https://www.google.com/maps/search/?api=1&query=Plot+849b%2C+Ouebode+Street%2C+Ifeanyi+Uba+Crescent%2C+Omole+Phase+2%2C+Ikeja%2C+Lagos%2C+Nigeria"
@@ -931,10 +946,10 @@ Legal tip: Consider dispute resolution clauses carefully before signing a contra
       <div class="container footer-bottom">
         <a
           class="developer-credit"
-          href="https://wa.me/2349160842294?text=Hello%21%20%F0%9F%91%8B%20I%E2%80%99m%20Bello%20Adam%20Olanrewaju%2C%20a%20Software%20Engineer%20specializing%20in%20building%20modern%20websites%20and%20web%20applications.%20I%E2%80%99d%20love%20to%20discuss%20working%20with%20you%20and%20helping%20bring%20your%20ideas%20to%20life.%20Looking%20forward%20to%20connecting%20with%20you%21"
+          href="https://wa.me/2349160842294?text=Hello%20Bello%21%20I%20came%20across%20a%20project%20you%20worked%20on%20and%20was%20impressed%20by%20the%20quality%20of%20your%20work.%20I%E2%80%99m%20interested%20in%20working%20with%20you%20on%20a%20software%20development%20project%20and%20would%20appreciate%20the%20opportunity%20to%20discuss%20the%20details.%20Looking%20forward%20to%20hearing%20from%20you%21"
           target="_blank"
           rel="noopener noreferrer"
-          >Developed by Bello Adam &amp; Hussein Abdulbasit
+          >Developed by ACE Labs
           <i class="fa-solid fa-arrow-up-right-from-square" aria-hidden="true"></i
         ></a>
       </div>
@@ -959,7 +974,7 @@ Legal tip: Consider dispute resolution clauses carefully before signing a contra
 
     <!-- WhatsApp Floating Button -->
     <a
-      href="https://wa.me/2348051385695?text=Hello%20Adoration%20Chambers%2C%20I%20would%20like%20to%20make%20an%20enquiry."
+      href="https://wa.me/2348051385695?text=Hello%20Adoration%20Chambers%2C%20I%E2%80%99d%20love%20to%20book%20a%20consultation"
       class="whatsapp-float"
       target="_blank"
       rel="noopener noreferrer"
@@ -979,7 +994,7 @@ Legal tip: Consider dispute resolution clauses carefully before signing a contra
 
     <!-- Floating Email Button -->
     <a
-      href="mailto:adorationchambers2@gmail.com?subject=Legal%20Enquiry&body=Hello%20Adoration%20Chambers%2C%0A%0AI%20would%20like%20to%20make%20an%20enquiry.%0A%0AThank%20you."
+      href="mailto:adorationchambers2@gmail.com?subject=Consultation%20Booking&body=Hello%20Adoration%20Chambers%2C%0A%0AI%E2%80%99d%20love%20to%20book%20a%20consultation.%0A%0AThank%20you."
       class="email-float"
       aria-label="Email Adoration Chambers"
       title="Email us"

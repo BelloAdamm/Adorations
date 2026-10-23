@@ -88,21 +88,41 @@
   const form = document.getElementById('enquiry-form');
   const note = document.getElementById('form-note');
   const preferredDate = form?.querySelector('[name="preferredDate"]');
+  const preferredTime = form?.querySelector('[name="preferredTime"]');
   if (preferredDate) {
     preferredDate.min = new Date(Date.now() + 60 * 60 * 1000)
       .toISOString()
       .slice(0, 10);
   }
 
+  const clearPreferredTimeError = () => {
+    preferredTime.setCustomValidity('');
+  };
+  preferredTime?.addEventListener('input', clearPreferredTimeError);
+  preferredDate?.addEventListener('input', clearPreferredTimeError);
+
   form?.addEventListener('submit', async event => {
     event.preventDefault();
     if (!form.reportValidity()) return;
+
+    const [year, month, day] = preferredDate.value.split('-').map(Number);
+    const [hours, minutes] = preferredTime.value.split(':').map(Number);
+    const preferredAt = Date.UTC(year, month - 1, day, hours - 1, minutes);
+    if (preferredAt <= Date.now()) {
+      preferredTime.setCustomValidity(
+        'Please choose a future date and time in West Africa Time.'
+      );
+      preferredTime.reportValidity();
+      return;
+    }
+    preferredTime.setCustomValidity('');
 
     const submitButton = form.querySelector('[type=submit]');
     const originalButtonText = submitButton?.innerHTML;
     const data = Object.fromEntries(new FormData(form).entries());
     const phoneNumber = String(data.phone || '').trim();
     const phoneCountryCode = String(data.phoneCountryCode || '');
+    data._subject = `Consultation request: ${data.practice}`;
     delete data.phoneCountryCode;
     data.phone = phoneNumber
       ? (phoneNumber.startsWith('+') || !phoneCountryCode
@@ -120,30 +140,38 @@
     }
 
     try {
-      const response = await fetch('/.netlify/functions/contact', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(data)
-      });
+      const response = await fetch(
+        'https://formsubmit.co/ajax/adorationchambers2@gmail.com',
+        {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+            Accept: 'application/json'
+          },
+          body: JSON.stringify(data)
+        }
+      );
       let result;
       try {
         result = await response.json();
       } catch {
         throw new Error('We could not confirm whether your request was received. Please contact the firm before submitting again.');
       }
-      if (!response.ok) {
-        throw new Error(result?.error || 'We could not send your request. Please try again.');
+      if (!response.ok || result?.success === false || result?.success === 'false') {
+        throw new Error(
+          result?.message || result?.error || 'We could not send your request. Please try again.'
+        );
       }
 
       form.reset();
       if (note) {
-        note.textContent = 'Your consultation request has been sent. Your preferred date and time are not confirmed until the firm contacts you.';
+        note.textContent = 'Your consultation request was submitted. Your preferred date and time are not confirmed until the firm contacts you.';
         note.dataset.state = 'success';
       }
     } catch (error) {
       if (note) {
         note.textContent = error instanceof TypeError
-          ? 'The consultation service could not be reached. Check your connection and reload the page. If this site is running from a local file or a non-Netlify host, its Netlify function is unavailable; contact the firm if the problem continues.'
+          ? 'The consultation service could not be reached. Check your connection and try again, or contact the firm directly if the problem continues.'
           : error.message || 'Something went wrong. Please try again later or contact the firm by phone.';
         note.dataset.state = 'error';
       }
